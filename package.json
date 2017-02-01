@@ -34,7 +34,7 @@
     "parse-json": "^2.2.0",
     "plist": "^2.0.1",
     "uuid": "^3.0.1",
-    "xml-js": "^0.9.7"
+    "xml-js": "^1.0.2"
   },
   "devDependencies": {
     "babel-eslint": "^7.0.0",
