@@ -1,7 +1,7 @@
 # node-atomizr
 
-[![npm](https://img.shields.io/npm/l/atomizr.svg?style=flat-square)](https://www.npmjs.org/package/atomizr)
-[![npm](https://img.shields.io/npm/v/atomizr.svg?style=flat-square)](https://www.npmjs.org/package/atomizr)
+[![npm](https://img.shields.io/npm/l/node-atomizr.svg?style=flat-square)](https://www.npmjs.org/package/node-atomizr)
+[![npm](https://img.shields.io/npm/v/node-atomizr.svg?style=flat-square)](https://www.npmjs.org/package/node-atomizr)
 [![Travis](https://img.shields.io/travis/idleberg/node-atomizr.svg?style=flat-square)](https://travis-ci.org/idleberg/node-atomizr)
 [![David](https://img.shields.io/david/idleberg/node-atomizr.svg?style=flat-square)](https://david-dm.org/idleberg/node-atomizr)
 [![David](https://img.shields.io/david/dev/idleberg/node-atomizr.svg?style=flat-square)](https://david-dm.org/idleberg/node-atomizr?type=dev)
@@ -10,7 +10,7 @@ Converts snippets for Atom, Sublime Text, TextMate, and Visual Studio Code. Base
 
 ## Installation
 
-`npm install -g atomizr`
+`npm install -g node-atomizr`
 
 ## Usage
 
@@ -28,7 +28,7 @@ Specifying `--source` is optional. However, since both, Atom and Visual Studio C
 ### Node
 
 ```js
-const Atomizr = require('atomizr');
+const Atomizr = require('node-atomizr');
 const fs = require('fs');
 
 fs.readFile('./example.sublime-completions', (error, data) => {
