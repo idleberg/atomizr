@@ -1,6 +1,6 @@
 {
   "name": "node-atomizr",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Converts snippets for Atom, Sublime Text, TextMate, and Visual Studio Code",
   "main": "index.js",
   "bin": {
