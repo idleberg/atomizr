@@ -13,6 +13,7 @@ program
     .usage('<file> [options]')
     .option('-s, --source [source]', 'specify conversion source')
     .option('-t, --target [target]', 'specify conversion target', 'atom')
+    .option('-o, --outdir [directory]', 'specify default output directory')
     .option('-g, --grammar [scope]', 'specify grammar scope for Visual Studio Code source')
     .option('-I, --ignoretab', 'ignore tab-stop separator')
     .action(function(pattern) {
@@ -20,7 +21,7 @@ program
             if (error) throw error;
 
             files.forEach(function(filePath) {
-                readFile(filePath, program);
+                readFile(filePath, outputDir(program.outdir), program);
             });
         });
     })
@@ -28,7 +29,7 @@ program
 
 if (program.args.length === 0) program.help();
 
-function readFile(input, opts) {
+function readFile(input, targetDir, opts) {
     fs.readFile(input, (error, data) => {
         if (error) throw error;
 
@@ -101,11 +102,26 @@ function readFile(input, opts) {
             return console.error('Error: Unsupported file-type');
         }
 
-        fs.writeFile(targetFile, output, function (err) {
+        console.log(path.join(targetDir, targetFile));
+
+        fs.writeFile(path.join(targetDir, targetFile), output, function (err) {
             if (err) {
                 return console.log(err);
             }
             console.log(`Writing "${targetFile}"`);
         });
     });
+}
+
+function outputDir(outputDir) {
+
+    if (typeof outputDir === 'undefined' || outputDir === true) {
+        return process.cwd();
+    }
+
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir);
+    }
+
+    return outputDir;
 }
