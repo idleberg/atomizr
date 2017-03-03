@@ -20,7 +20,10 @@ See `atomizr -h` for a list of all options
 
 ```bash
 # Convert Sublime Text completions into Atom snippets
-$ atomizr example.sublime-completions --target atom >> example.cson
+$ atomizr example.sublime-completions --target atom
+
+# Convert Atom snippets into TextMate snippets (use quotes with wildcards!)
+$ atomizr "*.cson" --target textmate
 ```
 
 Specifying `--source` is optional. However, since both, Atom and Visual Studio Code, work with `.json` snippets, it might be necessary to determine the source. When converting a Visual Studio Code snippet, the target scope for the target should be supplied (e.g. `--scope .source.haskell`) – otherwise the generic `.source` will be used.
