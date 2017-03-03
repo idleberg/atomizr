@@ -102,8 +102,6 @@ function readFile(input, targetDir, opts) {
             return console.error('Error: Unsupported file-type');
         }
 
-        console.log(path.join(targetDir, targetFile));
-
         fs.writeFile(path.join(targetDir, targetFile), output, function (err) {
             if (err) {
                 return console.log(err);
