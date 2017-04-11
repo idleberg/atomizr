@@ -24,7 +24,7 @@ program
     .option('-t, --target [target]', 'specify conversion target', 'atom')
     .option('-o, --outdir [directory]', 'specify default output directory')
     .option('-g, --grammar [scope]', 'specify grammar scope for Visual Studio Code source')
-    .option('-I, --ignore-tab', 'ignore tab-stop separator')
+    .option('-I, --ignoretab', 'ignore tab-stop separator')
     .action(function(pattern) {
         glob(pattern, function (error, files) {
             if (error) throw error;
@@ -69,7 +69,7 @@ function readFile(input, targetDir, opts) {
             }
         } else if (fileExt === '.sublime-completions' || fileExt === '.sublime-snippet' || opts.source === 'sublime') {
             scope = opts.grammar ? opts.grammar : null;
-            let ignore_separator = opts.ignoreTab ? true : false;
+            let ignore_separator = opts.ignoretab ? true : false;
             
             if (opts.target === 'textmate') {
                 output = Atomizr.sublime2textmate(inputFile, {is_snippet: isSnippet, scope: scope, ignore_separator: ignore_separator});
