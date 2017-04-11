@@ -4,7 +4,7 @@ const meta = require('../package.json');
 const Atomizr = require('../index.js');
 const program = require('commander');
 const fs = require('fs');
-const glob = require('glob');
+const glob = require('wildglob');
 const path = require('path');
 const updateNotifier = require('update-notifier');
 
@@ -26,13 +26,21 @@ program
     .option('-g, --grammar [scope]', 'specify grammar scope for Visual Studio Code source')
     .option('-I, --ignoretab', 'ignore tab-stop separator')
     .action(function(pattern) {
-        glob(pattern, function (error, files) {
+
+        let opts = {
+            nodir: true,
+            statCache: true,
+            cache:true
+        };
+
+        glob(pattern, opts, function (error, files) {
             if (error) throw error;
 
             files.forEach(function(filePath) {
                 readFile(filePath, outputDir(program.outdir), program);
             });
         });
+
     })
     .parse(process.argv);
 
@@ -111,12 +119,14 @@ function readFile(input, targetDir, opts) {
             return console.error('Error: Unsupported file-type');
         }
 
-        fs.writeFile(path.join(targetDir, targetFile), output, function (err) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log(`Writing "${targetFile}"`);
-        });
+        let targetPath = path.join(targetDir, targetFile);
+
+        console.log(`Writing "${targetFile}"`);
+        try {
+            fs.writeFileSync(targetPath, output);
+        } catch(e) {
+            console.log(e);
+        }
     });
 }
 
