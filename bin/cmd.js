@@ -6,6 +6,15 @@ const program = require('commander');
 const fs = require('fs');
 const glob = require('glob');
 const path = require('path');
+const updateNotifier = require('update-notifier');
+
+// Checks for available update and returns an instance
+const notifier = updateNotifier({pkg: meta});
+
+// Notify using the built-in convenience method
+if (notifier.update) {
+    console.log(`\nUpdate available: ${notifier.update.latest}`);
+}
 
 program
     .version(meta.version)
@@ -25,7 +34,7 @@ program
             });
         });
     })
- .parse(process.argv);
+    .parse(process.argv);
 
 if (program.args.length === 0) program.help();
 
@@ -112,7 +121,6 @@ function readFile(input, targetDir, opts) {
 }
 
 function outputDir(outputDir) {
-
     if (typeof outputDir === 'undefined' || outputDir === true) {
         return process.cwd();
     }
