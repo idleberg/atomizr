@@ -65,12 +65,14 @@ function readFile(input, targetDir, opts) {
         if ((fileExt === '.cson' || fileExt === '.json') && opts.source !== 'vscode') {
             scope = opts.grammar ? opts.grammar : null;
 
-            if (opts.target === 'textmate') {
+            if (opts.target === 'textmate' || opts.target === 'mate') {
                 output = Atomizr.atom2textmate(inputFile, {scope: scope});
                 targetFile = `${baseName}.tmSnippet`;
-            } else if (opts.target === 'vscode') {
+            } else if (opts.target === 'vscode' || opts.target === 'code') {
                 output = Atomizr.atom2vscode(inputFile, {scope: scope});
                 targetFile = `${baseName}.json`;
+            } else if (opts.target === 'atom') {
+                return console.log(`Skipping "${input}"`);
             } else {
                 output = Atomizr.atom2sublime(inputFile, {scope: scope});
                 targetFile = `${baseName}.sublime-completions`;
@@ -79,12 +81,14 @@ function readFile(input, targetDir, opts) {
             scope = opts.grammar ? opts.grammar : null;
             let ignore_separator = opts.ignoretab ? true : false;
             
-            if (opts.target === 'textmate') {
+            if (opts.target === 'textmate' || opts.target === 'mate') {
                 output = Atomizr.sublime2textmate(inputFile, {is_snippet: isSnippet, scope: scope, ignore_separator: ignore_separator});
                 targetFile = `${baseName}.tmSnippet`;
-            } else if (opts.target === 'vscode') {
+            } else if (opts.target === 'vscode' || opts.target === 'code') {
                 output = Atomizr.sublime2vscode(inputFile, {is_snippet: isSnippet, scope: scope, ignore_separator: ignore_separator});
                 targetFile = `${baseName}.json`;
+            } else if (opts.target === 'sublime' || opts.target === 'subl') {
+                return console.log(`Skipping "${input}"`);
             } else {
                 output = Atomizr.sublime2atom(inputFile, {is_snippet: isSnippet, scope: scope, ignore_separator: ignore_separator});
                 targetFile = `${baseName}.cson`;
@@ -92,12 +96,14 @@ function readFile(input, targetDir, opts) {
         } else if (fileExt === '.tmSnippet' || opts.source === 'textmate') {
             scope = opts.grammar ? opts.grammar : null;
 
-            if (opts.target === 'sublime') {
+            if (opts.target === 'sublime' || opts.target === 'subl') {
                 output = Atomizr.textmate2sublime(inputFile, {scope: scope});
                 targetFile = `${baseName}.sublime-completions`;
-            } else if (opts.target === 'vscode') {
+            } else if (opts.target === 'vscode' || opts.target === 'code') {
                 output = Atomizr.textmate2vscode(inputFile, {scope: scope});
                 targetFile = `${baseName}.json`;
+            } else if (opts.target === 'textmate' || opts.target === 'mate') {
+                return console.log(`Skipping "${input}"`);
             } else {
                 output = Atomizr.textmate2atom(inputFile, {scope: scope});
                 targetFile = `${baseName}.cson`;
@@ -105,12 +111,14 @@ function readFile(input, targetDir, opts) {
         } else if (fileExt === '.json' || opts.source === 'vscode') {
             scope = opts.grammar ? opts.grammar : '.source';
             
-            if (opts.target === 'sublime') {
+            if (opts.target === 'sublime' || opts.target === 'subl') {
                 output = Atomizr.vscode2sublime(inputFile, {scope: scope});
                 targetFile = `${baseName}.sublime-completions`;
-            } else if (opts.target === 'textmate') {
+            } else if (opts.target === 'textmate' || opts.target === 'mate') {
                 output = Atomizr.vscode2textmate(inputFile, {scope: scope});
                 targetFile = `${baseName}.tmSnippet`;
+            } else if (opts.target === 'vscode' || opts.target === 'code') {
+                return console.log(`Skipping "${input}"`);
             } else {
                 output = Atomizr.vscode2atom(inputFile, {scope: scope});
                 targetFile = `${baseName}.cson`;
