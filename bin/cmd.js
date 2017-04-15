@@ -24,7 +24,8 @@ program
     .option('-t, --target [target]', 'specify conversion target', 'atom')
     .option('-o, --outdir [directory]', 'specify default output directory')
     .option('-g, --grammar [scope]', 'specify grammar scope for Visual Studio Code source')
-    .option('-I, --ignoretab', 'ignore tab-stop separator')
+    .option('-I, --ignore-tab', 'ignore tab-stop separator')
+    .option('-S, --force-snippet', 'force Sublime Text snippets')
     .action(function(pattern) {
 
         let opts = {
