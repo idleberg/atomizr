@@ -1,6 +1,6 @@
 {
   "name": "node-atomizr",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "Converts snippets for Atom, Sublime Text, TextMate, and Visual Studio Code",
   "main": "index.js",
   "bin": {
@@ -40,15 +40,17 @@
     "xml-js": "^1.0.2"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.5.0",
+    "@types/node": "^8.0.26",
+    "ava": "^0.22.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-debug": "^3.1.0",
-    "gulp-jshint": "^2.0.4",
     "gulp-jsonlint": "^1.2.0",
-    "jshint": "^2.9.5"
+    "gulp-tslint": "^8.1.2",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.2"
   },
   "scripts": {
+    "build": "tsc -p ./",
     "test": "gulp lint"
   }
 }

@@ -1,30 +1,31 @@
 // Dependencies
 const debug = require('gulp-debug');
 const gulp = require('gulp');
-const jshint = require('gulp-jshint');
+const tslint = require('gulp-tslint');
 const jsonlint = require('gulp-jsonlint');
 
 // Files
-const jsFiles = [
-    './bin/*.js',
-    './lib/*.js',
-    './index.js'
+const tsFiles = [
+  'src/*.ts',
 ];
 
 const jsonFiles = [
     './package.json'
 ];
 
-// Lint JavaScript files
-gulp.task('lint:js', gulp.series(function(done) { 
-    gulp.src(jsFiles)
-        .pipe(debug({title: 'jshint:'}))
-        .pipe(jshint());
-    done();
+// Lint TypeScript
+gulp.task('lint:ts', gulp.series( (done) => {
+  gulp.src(tsFiles)
+    .pipe(debug({title: 'tslint'}))
+    .pipe(tslint({
+        formatter: "prose"
+    }))
+    .pipe(tslint.report())
+  done();
 }));
 
 // Lint JSON files
-gulp.task('lint:json', gulp.series(function(done) { 
+gulp.task('lint:json', gulp.series(function(done) {
     gulp.src(jsonFiles)
         .pipe(debug({title: 'jsonlint:'}))
         .pipe(jsonlint())
@@ -34,7 +35,7 @@ gulp.task('lint:json', gulp.series(function(done) {
 }));
 
 // Tasks
-gulp.task('lint', gulp.parallel('lint:js', 'lint:json', function(done) {
+gulp.task('lint', gulp.parallel('lint:ts', 'lint:json', function(done) {
   done();
 }));
 
