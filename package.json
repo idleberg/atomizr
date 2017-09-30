@@ -50,7 +50,7 @@
     "typescript": "^2.5.2"
   },
   "scripts": {
-    "build": "tsc -p ./",
-    "test": "gulp lint"
+    "build": "./node_modules/.bin/tsc -p ./",
+    "test": "./node_modules/.bin/gulp lint"
   }
 }
