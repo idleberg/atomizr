@@ -1,7 +1,6 @@
 import * as parseCson from 'cson-parser';
 import { addTrailingTabstops, exceptions, removeTrailingTabstops } from '../util';
 
-
 const read = (input, options) => {
     let data, output;
 

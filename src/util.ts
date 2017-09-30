@@ -10,7 +10,7 @@ const exceptions = {
     'source.markdown': '.source.gfm'
 };
 
-const addTrailingTabstops = (input, addTrailingTabstops = true) => {
+const addTrailingTabstops = (input, addTrailingTabstops: boolean = true) => {
     if (input == null) {
         return;
     }
@@ -20,7 +20,7 @@ const addTrailingTabstops = (input, addTrailingTabstops = true) => {
     return input + '$0';
 };
 
-const removeTrailingTabstops = (input, removeTrailingTabstops = true) => {
+const removeTrailingTabstops = (input, removeTrailingTabstops: boolean = true) => {
     if (input == null) {
         return;
     }

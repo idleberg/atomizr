@@ -76,7 +76,7 @@ const readXml = (input, options)  => {
         throw error;
     }
 
-    let inputScope = (typeof data.snippet.scope['_text'] !== 'undefined') ? data.snippet.scope['_text'] : 'source';
+    let inputScope = (typeof data.snippet.scope['_text'] !== 'undefined') ? data.snippet.scope['_text'] : null;
     let scope = options.scope ? options.scope : inputScope;
 
     // Minimum requirements
@@ -86,7 +86,9 @@ const readXml = (input, options)  => {
 
     // Get scope, convert if necessary
     output = {};
-    output.scope = scope;
+    if (scope !== null) {
+        output.scope = scope;
+    }
 
     let description, trigger, contents;
 
