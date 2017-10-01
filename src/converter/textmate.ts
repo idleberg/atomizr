@@ -10,9 +10,10 @@ const read = (input, options) => {
         throw error;
     }
 
-    let scope = options.scope ? options.scope : data.scope;
+    let inputScope = data.scope ? data.scope : 'source';
+    let scope = options.scope ? options.scope : inputScope;
 
-    if (!((data.content != null) && (data.tabTrigger != null) && (scope != null))) {
+    if (data.content === null || data.tabTrigger === null) {
         return console.warn('This doesn\'t seem to be a valid TextMate snippet file. Aborting.');
     }
 

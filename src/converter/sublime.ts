@@ -15,7 +15,7 @@ const readJson = (input, options) => {
     let scope = options.scope ? options.scope : data.scope;
 
     // Minimum requirements
-    if (!((scope != null) || (data.completions != null))) {
+    if (scope === null || typeof data.completions === 'undefined') {
         return console.warn('This doesn\'t seem to be a valid Sublime Text completions file. Aborting.');
     }
 
@@ -80,7 +80,7 @@ const readXml = (input, options)  => {
     let scope = options.scope ? options.scope : inputScope;
 
     // Minimum requirements
-    if (data.snippet.content._cdata !== null) {
+    if (typeof data.snippet.content._cdata === 'undefined') {
         return console.warn('This doesn\'t seem to be a valid Sublime Text snippet file. Aborting.');
     }
 
@@ -95,8 +95,10 @@ const readXml = (input, options)  => {
     if (data.snippet.description) {
         description = data.snippet.description['_text'];
     }
+
     trigger = data.snippet.tabTrigger['_text'];
     contents = data.snippet.content._cdata.trim();
+
     if (description) {
         output.completions = [
             {
@@ -113,6 +115,7 @@ const readXml = (input, options)  => {
             }
         ];
     }
+
     return output;
 };
 
