@@ -42,7 +42,7 @@
   "devDependencies": {
     "@types/node": "^8.5.5",
     "ava": "^0.22.0",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "^4.0.0",
     "gulp-debug": "^3.2.0",
     "gulp-jsonlint": "^1.2.1",
     "gulp-tslint": "^8.1.2",
