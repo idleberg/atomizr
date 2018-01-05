@@ -29,25 +29,25 @@
   },
   "homepage": "https://github.com/idleberg/node-atomizr#readme",
   "dependencies": {
-    "commander": "^2.9.0",
+    "commander": "^2.12.2",
     "cson-parser": "^2.0.0",
     "glob": "^7.1.1",
-    "parse-json": "^3.0.0",
-    "plist": "^2.0.1",
+    "parse-json": "^4.0.0",
+    "plist": "^2.1.0",
     "update-notifier": "^2.1.0",
     "uuid": "^3.0.1",
     "wildglob": "^0.1.1",
     "xml-js": "^1.0.2"
   },
   "devDependencies": {
-    "@types/node": "^8.0.26",
+    "@types/node": "^8.5.5",
     "ava": "^0.22.0",
     "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-debug": "^3.1.0",
-    "gulp-jsonlint": "^1.2.0",
+    "gulp-debug": "^3.2.0",
+    "gulp-jsonlint": "^1.2.1",
     "gulp-tslint": "^8.1.2",
-    "tslint": "^5.7.0",
-    "typescript": "^2.5.2"
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2"
   },
   "scripts": {
     "build": "./node_modules/.bin/tsc -p ./",
