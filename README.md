@@ -37,7 +37,7 @@ const fs = require('fs');
 fs.readFile('./example.sublime-completions', (error, data) => {
     if (error) throw error;
 
-    let output = Atomizr.atom2sublime(data);
+    let output = Atomizr.sublime2atom(data);
     console.log(output);
 });
 ```
