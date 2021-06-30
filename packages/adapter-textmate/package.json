@@ -1,0 +1,24 @@
+{
+  "name": "@atomizr/adapter-textmate",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "exports": {
+    "node": "./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "plist": "^3.0.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^11.0.0"
+  },
+  "volta": {
+    "node": "14.17.0"
+  }
+}
